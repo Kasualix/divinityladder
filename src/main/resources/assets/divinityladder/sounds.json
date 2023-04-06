@@ -1,0 +1,16 @@
+{
+  "dowsing_rod_found_ore": {
+    "subtitle": "sounds.divinityladder.dowsing_rod_found_ore",
+    "sounds": [
+      "divinityladder:dowsing_rod_found_ore"
+    ]
+  },
+  "bar_brawl": {
+    "sounds": [
+      {
+        "name": "divinityladder:bar_brawl",
+        "stream": true
+      }
+    ]
+  }
+}

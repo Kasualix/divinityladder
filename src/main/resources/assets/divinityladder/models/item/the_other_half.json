@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "divinityladder:item/the_other_half"
+  }
+}

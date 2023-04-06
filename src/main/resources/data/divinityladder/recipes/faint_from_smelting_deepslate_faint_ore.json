@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "divinityladder:deepslate_faint_ore"
+  },
+  "result": "divinityladder:faint",
+  "experience": 0.9,
+  "cookingtime": 400
+}

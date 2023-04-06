@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "divinityladder:diopside_block"
+    }
+  ],
+  "result": {
+    "item": "divinityladder:diopside",
+    "count": 9
+  }
+}

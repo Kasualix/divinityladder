@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "divinityladder:faint"
+    }
+  },
+  "result": {
+    "item": "divinityladder:faint_block"
+  }
+}

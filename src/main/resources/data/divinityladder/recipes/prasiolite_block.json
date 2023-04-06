@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "divinityladder:prasiolite"
+    }
+  },
+  "result": {
+    "item": "divinityladder:prasiolite_block"
+  }
+}

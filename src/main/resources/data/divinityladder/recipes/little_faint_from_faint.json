@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "divinityladder:faint"
+    }
+  ],
+  "result": {
+    "item": "divinityladder:little_faint",
+    "count": 4
+  }
+}

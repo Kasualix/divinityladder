@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "divinityladder:prasiolite"
+    }
+  ],
+  "result": {
+    "item": "divinityladder:little_prasiolite",
+    "count": 4
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "divinityladder:cucumber"
+    },
+    {
+      "item": "minecraft:potion"
+    },
+    {
+      "item": "divinityladder:salt"
+    }
+  ],
+  "result": {
+    "item": "pickle",
+    "count": 1
+  }
+}

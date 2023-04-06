@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "ABC",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:bread"
+    },
+    "A": {
+      "item": "divinityladder:tomato"
+    },
+    "B": {
+      "item": "minecraft:cooked_beef"
+    },
+    "C": {
+      "item": "divinityladder:pickle"
+    }
+  },
+  "result": {
+    "item": "divinityladder:hamburger"
+  }
+}

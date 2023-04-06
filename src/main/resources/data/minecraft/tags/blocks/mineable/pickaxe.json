@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "divinityladder:citrine_ore",
+    "divinityladder:citrine_block",
+    "divinityladder:deepslate_citrine_ore",
+    "divinityladder:faint_ore",
+    "divinityladder:faint_block",
+    "divinityladder:deepslate_faint_ore",
+    "divinityladder:diopside_ore",
+    "divinityladder:diopside_block",
+    "divinityladder:deepslate_diopside_ore",
+    "divinityladder:prasiolite_ore",
+    "divinityladder:prasiolite_block",
+    "divinityladder:deepslate_prasiolite_ore"
+  ]
+}

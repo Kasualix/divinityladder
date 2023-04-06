@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "divinityladder:citrine"
+    }
+  ],
+  "result": {
+    "item": "divinityladder:little_citrine",
+    "count": 4
+  }
+}
