@@ -1,14 +1,18 @@
 package net.uuz.divinityladder;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.uuz.divinityladder.block.ModBlocks;
 import net.uuz.divinityladder.item.ModItems;
+import net.uuz.divinityladder.painting.ModPaintings;
 import net.uuz.divinityladder.sound.ModSounds;
 import org.slf4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
@@ -26,6 +30,7 @@ public class DivinityLadder {
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
 
+        ModPaintings.register(eventBus);
         ModSounds.register(eventBus);
 
 

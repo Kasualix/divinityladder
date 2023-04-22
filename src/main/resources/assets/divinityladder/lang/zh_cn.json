@@ -40,7 +40,9 @@
   "item.divinityladder.tomato": "番茄",
   "item.divinityladder.lettuce": "生菜",
   "item.divinityladder.pickle": "腌黄瓜",
-  "item.divinityladder.hamburger": "汉堡包",
+  "item.divinityladder.hamburger": "超饱腹汉堡~",
+
+  "item.divinityladder.rice_seeds": "水稻种子",
 
   "block.divinityladder.citrine_ore": "锆石矿石",
   "block.divinityladder.deepslate_citrine_ore": "深层锆石矿石",
@@ -59,6 +61,8 @@
   "block.divinityladder.prasiolite_block": "堇云石块",
   "block.divinityladder.diopside_block": "透辉石块",
 
+  "block.divinityladder.rice": "水稻",
+  "block.divinityladder.blueberry_bush": "蓝莓丛",
 
   "itemGroup.divinityladdertab": "登神阶梯杂项",
   "itemGroup.divinityladdertab2": "登神阶梯建筑方块",

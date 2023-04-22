@@ -1,0 +1,6 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "divinityladder:block/blueberry_bush_stage1"
+  }
+}

@@ -11,6 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.uuz.divinityladder.DivinityLadder;
+import net.uuz.divinityladder.block.custom.RiceBlock;
 import net.uuz.divinityladder.item.ModCreativeModeTab;
 import net.uuz.divinityladder.item.ModItems;
 
