@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-
+    "divinityladder:salt_ore",
+    "divinityladder:deepslate_salt_ore"
   ]
 }

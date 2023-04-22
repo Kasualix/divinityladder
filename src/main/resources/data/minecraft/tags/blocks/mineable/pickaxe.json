@@ -12,6 +12,8 @@
     "divinityladder:deepslate_diopside_ore",
     "divinityladder:prasiolite_ore",
     "divinityladder:prasiolite_block",
-    "divinityladder:deepslate_prasiolite_ore"
+    "divinityladder:deepslate_prasiolite_ore",
+    "divinityladder:salt_ore",
+    "divinityladder:deepslate_salt_ore"
   ]
 }

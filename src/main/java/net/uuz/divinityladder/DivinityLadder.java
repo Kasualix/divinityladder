@@ -35,11 +35,18 @@ public class DivinityLadder {
 
 
         eventBus.addListener(this::setup);
+        eventBus.addListener(this::clientSetup);
 
         GeckoLib.initialize();
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    private void clientSetup(final FMLClientSetupEvent event){
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RICE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUEBERRY_BUSH.get(), RenderType.cutout());
+
     }
 
     private void setup(final FMLCommonSetupEvent event) {
