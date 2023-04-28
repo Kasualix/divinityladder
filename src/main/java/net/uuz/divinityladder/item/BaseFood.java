@@ -4,7 +4,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
-public class ModFoods {
+public class BaseFood extends BaseItem {
     public static final FoodProperties ORANGE = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.2F).build();
     public static final FoodProperties LEMON = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.1F).
             effect(new MobEffectInstance(MobEffects.HUNGER, 100, 0), 0.2F).build();
@@ -26,4 +26,9 @@ public class ModFoods {
             effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600, 0), 1.0F).
             effect(new MobEffectInstance(MobEffects.REGENERATION, 140, 0), 1.0F).
             effect(new MobEffectInstance(MobEffects.SATURATION, 400, 0), 1.0F).build();
+
+
+    public BaseFood(String name,FoodProperties foodProperties) {
+        super(name,new Properties().food(foodProperties));
+    }
 }
