@@ -72,5 +72,15 @@
   "itemGroup.divinityladdertab6": "登神阶梯食物",
 
   "item.divinityladder.bar_brawl_music_disc": "天空の境界線",
-  "item.divinityladder.bar_brawl_music_disc.desc": "天空の境界線"
+  "item.divinityladder.bar_brawl_music_disc.desc": "天空の境界線",
+
+  "enchantment.divinityladder.life_tree": "生命之树",
+  "enchantment.divinityladder.counter_attack": "反击",
+  "enchantment.divinityladder.frantic": "狂暴",
+  "enchantment.divinityladder.execute": "处决",
+  "enchantment.divinityladder.riverside_steam": "川流",
+  "enchantment.divinityladder.eagle_eye": "鹰眼",
+  "enchantment.divinityladder.absorb_blood": "吸血",
+  "enchantment.divinityladder.moon": "皎月",
+  "enchantment.divinityladder.sun": "日曜"
 }
