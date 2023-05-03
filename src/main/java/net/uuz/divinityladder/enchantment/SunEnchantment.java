@@ -11,8 +11,10 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.uuz.divinityladder.Registry.EnchantmentRegistry;
 
+@Mod.EventBusSubscriber
 public class SunEnchantment extends AttributeEnchantment{
     public SunEnchantment(String name, Rarity rarity, EnchantmentCategory category, EquipmentSlot[] equipmentSlots) {
         super(name, rarity, category, equipmentSlots);
@@ -24,12 +26,12 @@ public class SunEnchantment extends AttributeEnchantment{
     }
 
     @SubscribeEvent
-    public void onTickPlayerTick(TickEvent.PlayerTickEvent event) {
+    public static void onTickPlayerTick(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
         int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.SUN, player);
         if (enchantmentLevel > 0 && Minecraft.getInstance().level != null){
             boolean day = Minecraft.getInstance().level.isDay();
-            if(!day){
+            if(day){
                 AttributeInstance attribute = player.getAttribute(Attributes.ATTACK_DAMAGE);
                 double value = attribute.getValue() * 0.1;
                 onTickPlayerTick(event, (AttributeEnchantment) EnchantmentRegistry.SUN, value, AttributeModifier.Operation.MULTIPLY_TOTAL);

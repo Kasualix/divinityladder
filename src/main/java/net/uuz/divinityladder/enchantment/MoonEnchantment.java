@@ -26,7 +26,7 @@ public class MoonEnchantment extends AttributeEnchantment{
     }
 
     @SubscribeEvent
-    public void onTickPlayerTick(TickEvent.PlayerTickEvent event) {
+    public static void onTickPlayerTick(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
         int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.MOON, player);
         if (enchantmentLevel > 0 && Minecraft.getInstance().level != null){
