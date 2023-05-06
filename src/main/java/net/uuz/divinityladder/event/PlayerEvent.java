@@ -24,11 +24,7 @@ public class PlayerEvent {
         Player player = event.getPlayer();
         if (!player.isShiftKeyDown()) return;
 
-        player.getCapability(CapabilityRegistry.SHIELD).ifPresent(cap ->{
-            int capMaxShield = cap.getMaxShield();
-            int capShield = cap.getShield();
-            System.out.println(capMaxShield);
-            System.out.println(capShield);
+        player.getCapability(CapabilityRegistry.SHIELD).ifPresent(cap -> {
         });
     }
 
@@ -36,10 +32,10 @@ public class PlayerEvent {
     public static void ShieldCapabilityHurtEvent(LivingHurtEvent event) {
         float amount = event.getAmount();
         Entity entity = event.getEntity();
-        if (entity instanceof Player player){
+        if (entity instanceof Player player) {
             player.getCapability(CapabilityRegistry.SHIELD).ifPresent(cap -> {
                 if (cap.getShield() > 0) {
-                    cap.extractShield(player,amount);
+                    cap.extractShield(player, amount);
                     event.setCanceled(true);
                 }
                 if (cap.getShield() <= 0) {
@@ -49,9 +45,10 @@ public class PlayerEvent {
             });
         }
     }
+
     @SubscribeEvent
     public static void ShieldCapabilityRestoreEvent(TickEvent.PlayerTickEvent event) {
-        if (event.phase == TickEvent.Phase.END){
+        if (event.phase == TickEvent.Phase.END) {
             return;
         }
         Player player = event.player;
@@ -60,9 +57,9 @@ public class PlayerEvent {
         boolean inCombat = PlayerCombatTracker.isInCombat();
         player.getCapability(CapabilityRegistry.SHIELD).ifPresent(cap -> {
             if (player.getEffect(EffectRegistry.BROKEN) == null) {
-                if(gameTime % 40 == 0){
-                    if (!inCombat){
-                        cap.receiveShield(player,1);
+                if (gameTime % 40 == 0) {
+                    if (!inCombat) {
+                        cap.receiveShield(player, 1);
                     }
                 }
             }

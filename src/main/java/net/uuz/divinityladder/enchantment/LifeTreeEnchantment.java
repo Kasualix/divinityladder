@@ -1,6 +1,5 @@
 package net.uuz.divinityladder.enchantment;
 
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -17,9 +16,22 @@ import net.uuz.divinityladder.Registry.EnchantmentRegistry;
 
 
 @Mod.EventBusSubscriber
-public class LifeTreeEnchantment extends AttributeEnchantment{
+public class LifeTreeEnchantment extends AttributeEnchantment {
     public LifeTreeEnchantment(String name, Rarity rarity, EnchantmentCategory category, EquipmentSlot[] equipmentSlots) {
         super(name, rarity, category, equipmentSlots);
+    }
+
+    @SubscribeEvent
+    public static void onTickPlayerTick(TickEvent.PlayerTickEvent event) {
+        Player player = event.player;
+        int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.LIFE_TREE, player);
+        if (player.getHealth() > player.getMaxHealth()) {
+//            player.invulnerableTime = 0;
+//            player.hurt(DamageSource.OUT_OF_WORLD, player.getHealth() - player.getMaxHealth());
+            player.setHealth(player.getMaxHealth());
+        }
+        double value = player.getMaxHealth() * 0.1 * enchantmentLevel;
+        onTickPlayerTick(event, (AttributeEnchantment) EnchantmentRegistry.LIFE_TREE, value, AttributeModifier.Operation.ADDITION);
     }
 
     @Override
@@ -43,17 +55,5 @@ public class LifeTreeEnchantment extends AttributeEnchantment{
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack) {
         return stack.getItem() instanceof ArmorItem;
-    }
-
-    @SubscribeEvent
-    public static void onTickPlayerTick(TickEvent.PlayerTickEvent event) {
-        Player player = event.player;
-        int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.LIFE_TREE, player);
-        if (player.getHealth() > player.getMaxHealth()) {
-            player.invulnerableTime = 0;
-            player.hurt(DamageSource.OUT_OF_WORLD, player.getHealth() - player.getMaxHealth());
-        }
-        double value = player.getMaxHealth() * 0.1 * enchantmentLevel;
-        onTickPlayerTick(event, (AttributeEnchantment) EnchantmentRegistry.LIFE_TREE,value,AttributeModifier.Operation.ADDITION);
     }
 }
