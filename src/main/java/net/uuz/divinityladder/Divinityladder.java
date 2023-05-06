@@ -1,6 +1,7 @@
 package net.uuz.divinityladder;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -12,11 +13,14 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.uuz.divinityladder.Registry.ItemRegistry;
+import net.uuz.divinityladder.client.gui.ShieldBarRenderer;
+import net.uuz.divinityladder.network.DivinityladderPacketHandler;
 import org.slf4j.Logger;
 
 import java.util.stream.Collectors;
@@ -34,8 +38,9 @@ public class Divinityladder {
             return ItemRegistry.CORN.getDefaultInstance();
         }
     };
-
     public Divinityladder() {
+
+
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the setup method for modloading
@@ -44,15 +49,26 @@ public class Divinityladder {
         eventBus.addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
         eventBus.addListener(this::processIMC);
-
+        eventBus.addListener(this::onFMLClientSetup);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
+
     }
+
+    public void onFMLClientSetup(final FMLClientSetupEvent event) {
+        ShieldBarRenderer.register();
+    }
+
+
 
     private void setup(final FMLCommonSetupEvent event) {
         // Some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+
+        DivinityladderPacketHandler.init();
+
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
@@ -85,5 +101,10 @@ public class Divinityladder {
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
             // Register a new block here
         }
+    }
+
+    public static ResourceLocation asResource(String path)
+    {
+        return new ResourceLocation(MOD_ID, path);
     }
 }

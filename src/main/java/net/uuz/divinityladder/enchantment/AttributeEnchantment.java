@@ -18,7 +18,7 @@ public abstract class AttributeEnchantment extends BaseEnchantment {
     public AttributeEnchantment(String name, Rarity rarity, EnchantmentCategory category, EquipmentSlot[] equipmentSlots) {
         super(name, rarity, category, equipmentSlots);
     }
-    UUID getUUID() {
+    static UUID getUUID() {
         return uuid;
     }
 

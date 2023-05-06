@@ -1,24 +1,18 @@
 package net.uuz.divinityladder.enchantment;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.uuz.divinityladder.Registry.EnchantmentRegistry;
 
 @Mod.EventBusSubscriber
-public class SunEnchantment extends BaseEnchantment {
+public class SunEnchantment extends BaseEnchantment{
     public SunEnchantment(String name, Rarity rarity, EnchantmentCategory category, EquipmentSlot[] equipmentSlots) {
         super(name, rarity, category, equipmentSlots);
     }
@@ -26,12 +20,12 @@ public class SunEnchantment extends BaseEnchantment {
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
         Entity entity = event.getSource().getEntity();
-        if (entity instanceof Player player) {
+        if (entity instanceof Player player){
             int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.SUN, player);
-            if (enchantmentLevel > 0) {
+            if (enchantmentLevel > 0){
                 Level level = player.level;
                 boolean day = level.isDay();
-                if (day) {
+                if (day){
                     event.setAmount(event.getAmount() + event.getAmount() * 0.1f);
                 }
             }
