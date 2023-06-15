@@ -16,8 +16,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class Shield implements IShield, ICapabilitySerializable<CompoundTag>, ICapabilityProvider {
-    private int maxShield = 4;
-    private int shield = 4;
+    private int maxShield = 8;
+    private int shield = 8;
 
     @Override
     public int getMaxShield() {
