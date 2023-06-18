@@ -12,7 +12,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.uuz.divinityladder.Registry.CapabilityRegistry;
 import net.uuz.divinityladder.Registry.EffectRegistry;
-import net.uuz.divinityladder.common.PlayerCombatTracker;
 
 @Mod.EventBusSubscriber
 public class PlayerEvent {
@@ -51,19 +50,23 @@ public class PlayerEvent {
         if (event.phase == TickEvent.Phase.END) {
             return;
         }
-        Player player = event.player;
+        var player = event.player;
         if (player.level.isClientSide) return;
         long gameTime = player.level.getGameTime();
-        boolean inCombat = PlayerCombatTracker.isInCombat();
         player.getCapability(CapabilityRegistry.SHIELD).ifPresent(cap -> {
             if (player.getEffect(EffectRegistry.BROKEN) == null) {
                 if (gameTime % 40 == 0) {
-                    if (!inCombat) {
+                    if (!isInCombat(player)) {
                         cap.receiveShield(player, 1);
                     }
                 }
             }
         });
     }
+    
+	private static boolean isInCombat(Player player) {
+		var time = player.tickCount;
+		return time - player.getLastHurtByMobTimestamp() < 100 || time - player.getLastHurtMobTimestamp() < 100;
+	}
 
 }
