@@ -22,7 +22,7 @@ public class AbsorbBloodEnchantment extends BaseEnchantment{
         float amount = event.getAmount();
         Entity source = event.getSource().getEntity();
         if (source instanceof Player player) {
-            int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.ABSORB_BLOOD, player);
+            int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.ABSORB_BLOOD.get(), player);
             if (enchantmentLevel > 0) {
                 float health = player.getHealth();
                 float maxHealth = player.getMaxHealth();

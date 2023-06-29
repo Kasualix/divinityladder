@@ -5,6 +5,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 public class CounterattackEnchantment extends BaseEnchantment{
     public CounterattackEnchantment(String name, Rarity rarity, EnchantmentCategory category, EquipmentSlot[] equipmentSlots) {
@@ -20,7 +21,7 @@ public class CounterattackEnchantment extends BaseEnchantment{
     }
 
     @Override
-    public void doPostHurt(LivingEntity player, Entity entity, int level){
+    public void doPostHurt(@NotNull LivingEntity player, @NotNull Entity entity, int level){
         float knockback = level * 0.5f;
         if (entity instanceof LivingEntity livingEntity) {
             Vec3 knockbackVec = new Vec3(player.getX() - livingEntity.getX(), 0, player.getZ() - livingEntity.getZ());

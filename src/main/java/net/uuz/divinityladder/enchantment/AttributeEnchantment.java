@@ -1,5 +1,6 @@
 package net.uuz.divinityladder.enchantment;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -8,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.uuz.divinityladder.Divinityladder;
 
 import java.util.UUID;
@@ -18,6 +20,7 @@ public abstract class AttributeEnchantment extends BaseEnchantment {
     public AttributeEnchantment(String name, Rarity rarity, EnchantmentCategory category, EquipmentSlot[] equipmentSlots) {
         super(name, rarity, category, equipmentSlots);
     }
+
     static UUID getUUID() {
         return uuid;
     }
@@ -31,7 +34,10 @@ public abstract class AttributeEnchantment extends BaseEnchantment {
     private static void Attribute(Player player, AttributeEnchantment enchantment, double value, AttributeModifier.Operation operation) {
         int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(enchantment, player);
         AttributeInstance instance = player.getAttributes().getInstance(enchantment.getAttribute());
-        AttributeModifier modifier = instance.getModifier(enchantment.getUUID());
+        AttributeModifier modifier = null;
+        if (instance != null) {
+            modifier = instance.getModifier(getUUID());
+        }
         removeAttribute(instance, modifier);
         addAttribute(enchantment, value, operation, enchantmentLevel, instance);
     }
@@ -43,8 +49,9 @@ public abstract class AttributeEnchantment extends BaseEnchantment {
     }
 
     private static void addAttribute(AttributeEnchantment enchantment, double value, AttributeModifier.Operation operation, int enchantmentLevel, AttributeInstance instance) {
-        if (enchantmentLevel > 0) {
-            AttributeModifier attributeModifier = new AttributeModifier(enchantment.getUUID(), Divinityladder.MOD_ID + enchantment.getRegistryName().getPath(), value, operation);
+        ResourceLocation enchantmentResourceLocation = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
+        if (enchantmentLevel > 0 && enchantmentResourceLocation != null) {
+            AttributeModifier attributeModifier = new AttributeModifier(getUUID(), Divinityladder.MOD_ID + enchantmentResourceLocation.getPath(), value, operation);
             instance.addTransientModifier(attributeModifier);
         }
     }

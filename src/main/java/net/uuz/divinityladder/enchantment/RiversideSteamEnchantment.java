@@ -6,6 +6,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
+import org.jetbrains.annotations.NotNull;
 
 public class RiversideSteamEnchantment extends BaseEnchantment {
     public RiversideSteamEnchantment(String name, Rarity rarity, EnchantmentCategory category, EquipmentSlot[] equipmentSlots) {
@@ -20,13 +21,9 @@ public class RiversideSteamEnchantment extends BaseEnchantment {
     public int getMaxCost(int p_45268_) {
         return super.getMinCost(p_45268_) + 50;
     }
-    @Override
-    public int getMaxLevel() {
-        return 1;
-    }
 
     @Override
-    public void doPostAttack(LivingEntity attack, Entity livingEntity, int p_44688_) {
+    public void doPostAttack(@NotNull LivingEntity attack, @NotNull Entity livingEntity, int p_44688_) {
         if (livingEntity instanceof LivingEntity target && attack instanceof Player player) {
             boolean sensitiveToWater = target.isSensitiveToWater();
             if (sensitiveToWater) {

@@ -17,10 +17,10 @@ import net.uuz.divinityladder.Registry.EffectRegistry;
 public class PlayerEvent {
     @SubscribeEvent
     public static void onPlayerInteractRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        Level world = event.getWorld();
+        Level world = event.getLevel();
         InteractionHand hand = event.getHand();
         if (world.isClientSide || hand != InteractionHand.MAIN_HAND) return;
-        Player player = event.getPlayer();
+        Player player = event.getEntity();
         if (!player.isShiftKeyDown()) return;
 
         player.getCapability(CapabilityRegistry.SHIELD).ifPresent(cap -> {
@@ -38,7 +38,7 @@ public class PlayerEvent {
                     event.setCanceled(true);
                 }
                 if (cap.getShield() <= 0) {
-                    player.addEffect(new MobEffectInstance(EffectRegistry.BROKEN, 200, 0, false, false));
+                    player.addEffect(new MobEffectInstance(EffectRegistry.BROKEN.get(), 200, 0, false, false));
                 }
 
             });
@@ -47,14 +47,14 @@ public class PlayerEvent {
 
     @SubscribeEvent
     public static void ShieldCapabilityRestoreEvent(TickEvent.PlayerTickEvent event) {
-        if (event.phase == TickEvent.Phase.END) {
+        if (event.phase != TickEvent.Phase.END) {
             return;
         }
         var player = event.player;
         if (player.level.isClientSide) return;
         long gameTime = player.level.getGameTime();
         player.getCapability(CapabilityRegistry.SHIELD).ifPresent(cap -> {
-            if (player.getEffect(EffectRegistry.BROKEN) == null) {
+            if (player.getEffect(EffectRegistry.BROKEN.get()) == null) {
                 if (gameTime % 40 == 0) {
                     if (!isInCombat(player)) {
                         cap.receiveShield(player, 1);

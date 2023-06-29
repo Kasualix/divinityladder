@@ -40,7 +40,7 @@ public class FranticEnchantment extends AttributeEnchantment {
             double amount = modifier.getAmount();
             float magnification = 0.05f;
             float value = (float) (healthPercentage * 10 * magnification * amount);
-            onTickPlayerTick(event, (AttributeEnchantment) EnchantmentRegistry.FRANTIC, value, AttributeModifier.Operation.MULTIPLY_TOTAL);
+            onTickPlayerTick(event, (AttributeEnchantment) EnchantmentRegistry.FRANTIC.get(), value, AttributeModifier.Operation.MULTIPLY_TOTAL);
         }
     }
 }

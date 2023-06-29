@@ -4,6 +4,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
+@SuppressWarnings("deprecation")
 public class BaseFood extends BaseItem {
     public static final FoodProperties ORANGE = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.2F).build();
     public static final FoodProperties LEMON = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.1F).

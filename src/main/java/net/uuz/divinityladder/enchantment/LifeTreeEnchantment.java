@@ -24,14 +24,12 @@ public class LifeTreeEnchantment extends AttributeEnchantment {
     @SubscribeEvent
     public static void onTickPlayerTick(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
-        int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.LIFE_TREE, player);
+        int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.LIFE_TREE.get(), player);
         if (player.getHealth() > player.getMaxHealth()) {
-//            player.invulnerableTime = 0;
-//            player.hurt(DamageSource.OUT_OF_WORLD, player.getHealth() - player.getMaxHealth());
             player.setHealth(player.getMaxHealth());
         }
         double value = player.getMaxHealth() * 0.1 * enchantmentLevel;
-        onTickPlayerTick(event, (AttributeEnchantment) EnchantmentRegistry.LIFE_TREE, value, AttributeModifier.Operation.ADDITION);
+        onTickPlayerTick(event, (AttributeEnchantment) EnchantmentRegistry.LIFE_TREE.get(), value, AttributeModifier.Operation.ADDITION);
     }
 
     @Override

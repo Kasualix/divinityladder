@@ -24,14 +24,11 @@ public class EagleEyeEnchantment extends BaseEnchantment{
     public int getMaxCost(int p_45123_) {
         return this.getMinCost(p_45123_) + 30;
     }
-    @Override
-    public int getMaxLevel() {
-        return super.getMaxLevel();
-    }
+
     @SubscribeEvent
     public static void onTickPlayerTick(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
-        int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.EAGLE_EYE, player);
+        int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.EAGLE_EYE.get(), player);
         if (enchantmentLevel > 0) {
             player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 20, 0, false, false));
         }

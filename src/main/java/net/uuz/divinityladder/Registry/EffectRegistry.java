@@ -2,18 +2,15 @@ package net.uuz.divinityladder.Registry;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+import net.uuz.divinityladder.Divinityladder;
 import net.uuz.divinityladder.effect.BaseEffect;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EffectRegistry {
-    public static BaseEffect BROKEN;
-    @SubscribeEvent
-    public static void registerEnchantments(final RegistryEvent.Register<MobEffect> event){
-        event.getRegistry().registerAll(
-                BROKEN = new BaseEffect("broken",MobEffectCategory.BENEFICIAL, 0x00FF00)
-        );
-    }
+    public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, Divinityladder.MOD_ID);
+
+    public static final RegistryObject<MobEffect> BROKEN = MOB_EFFECTS.register("broken", () -> new BaseEffect(MobEffectCategory.BENEFICIAL, 0x00FF00));
+
 }

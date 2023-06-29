@@ -21,7 +21,7 @@ public class MoonEnchantment extends BaseEnchantment{
     public static void onLivingHurt(LivingHurtEvent event) {
         Entity entity = event.getSource().getEntity();
         if (entity instanceof Player player){
-            int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.MOON, player);
+            int enchantmentLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.MOON.get(), player);
             if (enchantmentLevel > 0){
                 Level level = player.level;
                 boolean day = level.isDay();

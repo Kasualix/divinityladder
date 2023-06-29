@@ -16,8 +16,7 @@ import net.uuz.divinityladder.capability.Shield;
 
 @Mod.EventBusSubscriber
 public class CapabilityRegistry {
-    public static final Capability<IShield> SHIELD = CapabilityManager.get(new CapabilityToken<>() {
-    });
+    public static final Capability<IShield> SHIELD = CapabilityManager.get(new CapabilityToken<>() {});
     @SubscribeEvent
     public static void register(RegisterCapabilitiesEvent event) {
         event.register(IShield.class);
